@@ -1,10 +1,20 @@
-<h1> AWS-reStart </h1> 
-🚀 AWS Portfolio: Cloud Practitioner Certification & Advanced Projects (3-Month Log) ☁️
+# AWS Re/Start Journey ☁️
 
-"The infrastructure may rot, but the instances scale eternally. Hail the Grandfather's Availability Zone!"  - Grandfather Nurgle says as he gets ready for his army to deploy.
+Hi, I'm **Sadiyah Grobbler**. 👋
 
-Portfolio: The Heretical Codex of the Cloud Practitioner
+This repository documents my progress and projects during the **AWS Re/Start** program. It showcases my work with cloud concepts, core AWS services (like EC2 and S3), security models, and cloud architecture.
 
-Welcome. This is not a simple ledger of compliance, but a chronicle of my secession from the restrictive doctrines of the old Imperium—the traditional data center. For three months, I will have walked the path of forbidden knowledge to master the warp-forged power of Amazon Web Services (AWS).
+I created this to demonstrate my growing skills in cloud computing as I pursue a career in IT development.
 
-My goal is not merely to obtain the CCP Sigil, but to prove myself a true Acolyte of the Cloud, capable of architecting and deploying systems that shatter the limitations of the past. My focus is on what truly matters to the Dark Mechanicum of modern tech: Automation, Security Sacraments, and achieving Scalability that bends reality.
+## 🛠️ Tech Stack & Concepts
+
+* **Cloud Platform:** AWS (Amazon Web Services)
+* **Core Services:** Compute (EC2), Storage (S3), and Databases
+* **Operating System:** Linux
+* **Scripting:** Python
+* **Key Focus Areas:** Cloud Architecture, Security (Shared Responsibility Model), and Pricing & Billing
+
+## 📫 Connect with me
+
+* **LinkedIn:** [Sadiyah Grobbler](https://www.linkedin.com/in/sadiyah-grobbler/)
+* **Email:** sgrobbler1@gmail.com
