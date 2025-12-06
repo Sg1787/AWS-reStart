@@ -1,10 +1,10 @@
-# ⚙️ Service Notes & Documentation
+#  Service Notes & Documentation
 
 This repository serves as a centralized knowledge base for technical notes, service configurations, and troubleshooting procedures across various domains and cloud environments.
 
 ***
 
-## 📂 Content Structure
+##  Content Structure
 
 Notes are organized by service type or domain for easy reference:
 
@@ -17,9 +17,21 @@ Notes are organized by service type or domain for easy reference:
 * **Troubleshooting:**
     * Common issues and step-by-step resolution guides.
 
-***
 
-## 💡 Usage
+## AWS Service Codes and Uses
 
-Each subdirectory contains a collection of Markdown files (`.md`) specific to that service or topic.
+| Code           | Service Name                  | Use |
+|----------------|-------------------------------|-----|
+| EC2            | Elastic Compute Cloud         | Virtual servers |
+| S3             | Simple Storage Service        | Store files, backups, static websites |
+| RDS            | Relational Database Service   | Managed databases (MySQL, PostgreSQL, etc.) |
+| Lambda         | AWS Lambda                    | Run code without servers |
+| IAM            | Identity and Access Management| Manage users and permissions |
+| CloudWatch     | Amazon CloudWatch             | Monitor apps and logs |
+| VPC            | Virtual Private Cloud         | Secure private network in AWS |
+| ECS / EKS      | Container Services            | Run Docker containers |
+| SNS            | Simple Notification Service   | Send alerts (email, SMS) |
+| SQS            | Simple Queue Service          | Handle messages between services |
+| CLI            | AWS Command Line Interface    | Control AWS from terminal |
+| CloudFormation | AWS CloudFormation            | Define infrastructure as code |
 
