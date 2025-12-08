@@ -175,10 +175,11 @@ Every expert was once a beginner who just kept typing `ls` until it made sense. 
 | `./script.sh` | Executes a bash script located in the current directory. |
 
 ### Labs (Goals)
-
-### Lab Goal: Bash Scripting Challenge
->  
-> **Your mission**: Write a script that:
+Bash Shell Scripts
+>  Lab: https://github.com/Sg1787/AWS-reStart/blob/main/Labs/The%20Bash%20Shell.md
+> 
+> **My mission**:
+> Write a script that:
 > 1. Installs a web server (`nginx`)
 > 2. Creates a simple HTML file in `/var/www/html`
 > 3. Starts the service and enables it on boot  
