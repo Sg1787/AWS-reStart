@@ -1,6 +1,6 @@
 # How to Write a Simple Backup Script in Bash (Linux on AWS)
 
-This guide walks you through creating a reusable Bash script that **automatically backs up a folder** with a **timestamped filename**—just like you’d do in real sysadmin work!
+This guide walks you through creating a reusable Bash script that **automatically backs up a folder** with a **timestamped filename**—just like I would do in real sysadmin work!
 
 ---
 
