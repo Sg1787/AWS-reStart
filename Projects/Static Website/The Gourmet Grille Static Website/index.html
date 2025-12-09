@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gourmet Grille</title>
+    <link rel="icon" href="images/istockphoto-1147846639-612x612.jpg">
+    <!-- Load Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for aesthetic icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom Styles and Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        :root {
+            --primary-color: rgb(250, 192, 49); /* Gold */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            scroll-behavior: smooth;
+        }
+        .primary-bg {
+            background-color: var(--primary-color);
+        }
+        .primary-text {
+            color: var(--primary-color);
+        }
+        .hero-bg {
+            background-image: url('https://eurweb.com/wp-content/uploads/2025/02/image-87.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-padding {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- JavaScript Data and Utility Functions -->
+    <script>
+        // Data structure (simplified from React version)
+        const menuData = [
+            { id: 1, name: "Grilled Atlantic Salmon", description: "Pan-seared salmon fillet with lemon-dill butter and roasted asparagus.", price: "R209.99", imagePlaceholder: "https://th.bing.com/th/id/R.d3e631f4ec26500d2e58b994af8f1bcb?rik=7eGWS%2fzkqddE9w&riu=http%3a%2f%2fwww.cookingclassy.com%2fwp-content%2fuploads%2f2017%2f02%2fskillet-seared-salmon-garlic-lemon-butter-sauce-9.jpg&ehk=HOk8zc0jI5y7mzQ6mhYy%2fvnTlYrGnU7IJ7rdVfNGsIU%3d&risl=&pid=ImgRaw&r=0" },
+            { id: 2, name: "Truffle Mushroom Risotto", description: "Creamy Arborio rice with wild mushrooms, white truffle oil, and Parmesan cheese.", price: "R124.50", imagePlaceholder: "https://www.lakeshorelady.com/wp-content/uploads/2021/02/mushroom-risotto-8.jpg" },
+            { id: 3, name: "Wagyu Beef Burger", description: "Premium Wagyu patty, aged cheddar, caramelized onions, and house aioli on a brioche bun.", price: "R220.00", imagePlaceholder: "https://www.foxvalleyfoodie.com/wp-content/uploads/2015/11/wagyu-beef-burger-recipe.jpg" },
+            { id: 4, name: "Sparkling Elderflower Spritz", description: "Refreshing blend of elderflower syrup, lime, mint, and sparkling water.", price: "R60.99", imagePlaceholder: "https://i.pinimg.com/736x/a5/c3/7a/a5c37aac5934f9ff3980b9f7754c034f.jpg" },
+            { id: 5, name: "Artisan Dark Roast Coffee", description: "Locally sourced beans, freshly ground, served hot or iced.", price: "R40.50", imagePlaceholder: "https://th.bing.com/th/id/R.81c1d06fc83282bd010c6d6bfd3e85fd?rik=k2LuPeGvtmMglg&riu=http%3a%2f%2fjoyturner.net%2fwp-content%2fuploads%2f2014%2f03%2frecipies-of-coffee.jpg&ehk=8y35bzW7ustjrIf6Rw50AKrjCCyC4cp2ZTZ4QyMaWlI%3d&risl=&pid=ImgRaw&r=0" },
+            { id: 6, name: "Crème Brûlée Trio", description: "Vanilla, Lavender, and Espresso flavored classic custards with a caramelized sugar crust.", price: "R100.00", imagePlaceholder: "https://easyworldrecipes.com/wp-content/uploads/2024/07/Creme-Brulee-1024x1536.jpg" },
+        ];
+
+        const reviewData = [
+            { id: 1, name: "Elara Vance", rating: 5, comment: "The salmon was exquisite! Perfectly cooked and the service was outstanding. A must-try spot in town." },
+            { id: 2, name: "Marcus Chen", rating: 4, comment: "Great atmosphere, but the burger was slightly overcooked. The truffle risotto, however, was divine." },
+            { id: 3, name: "Sophia R. Lee", rating: 5, comment: "My new favorite place for date night. The wine list is superb and the staff is incredibly attentive." },
+            { id: 4, name: "Liam O'Connell", rating: 4, comment: "Fantastic cocktails and quick delivery. The spritz is incredibly refreshing for a summer evening." },
+        ];
+
+        const teamData = [
+            { id: 1, name: "Chef Alain Dubois", role: "Head Chef", bio: "With 20 years in fine dining, Chef Dubois brings French culinary excellence to The Gourmet Grille.", imagePlaceholder: "https://placehold.co/200x200/A0522D/ffffff?text=Alain" },
+            { id: 2, name: "Isabella Cruz", role: "Pastry Specialist", bio: "Isabella crafts our signature desserts, blending classic techniques with modern, seasonal flavors.", imagePlaceholder: "https://placehold.co/200x200/DDA0DD/ffffff?text=Isabella" },
+            { id: 3, name: "Ethan Scott", role: "Sous Chef", bio: "A master of precision and execution, Ethan ensures every dish meets our rigorous standards.", imagePlaceholder: "https://placehold.co/200x200/87CEFA/ffffff?text=Ethan" },
+            { id: 4, name: "Maya Singh", role: "Restaurant Manager", bio: "Maya oversees operations, guaranteeing a seamless and exceptional dining experience for all guests.", imagePlaceholder: "https://placehold.co/200x200/FA8072/ffffff?text=Maya" },
+        ];
+
+       
+
+        // Function to toggle the mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            menu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+
+        // Function to handle the Order form submission
+        function handleOrderSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+            const form = event.target;
+            const statusMessage = document.getElementById('order-status-message');
+            const submitButton = document.getElementById('order-submit-button');
+            const orderName = form.querySelector('input[placeholder="Your Full Name*"]').value;
+            
+            // Simple validation
+            if (orderName.trim() === "") {
+                statusMessage.innerHTML = '<div class="mt-4 p-3 bg-red-100 text-red-700 rounded-lg font-medium">Please enter your full name before submitting the order.</div>';
+                return;
+            }
+
+            // Simulate loading state
+            submitButton.innerHTML = 'Placing Order...';
+            submitButton.disabled = true;
+            statusMessage.innerHTML = ''; // Clear previous messages
+
+            // Simulate API call delay
+            setTimeout(() => {
+                // Log data (where you would typically send it to a backend)
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                console.log('Order Data:', data);
+                
+                // Show success message and reset form
+                statusMessage.innerHTML = '<div class="mt-4 p-3 bg-green-100 text-green-700 rounded-lg font-medium">Order Placed Successfully! We will contact you shortly.</div>';
+                
+                submitButton.innerHTML = 'Confirm Order';
+                submitButton.disabled = false;
+                form.reset();
+                
+                // Clear success message after 3 seconds
+                setTimeout(() => {
+                    statusMessage.innerHTML = '';
+                }, 3000);
+            }, 1500);
+        }
+
+        // Function to generate Star Icons
+        function generateStarRating(rating) {
+            let stars = '';
+            for (let i = 0; i < 5; i++) {
+                const colorClass = i < rating ? 'text-yellow-500 fill-yellow-500' : 'text-gray-300';
+                stars += `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 transition-colors duration-300 ${colorClass}"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+            }
+            return `<div class="flex justify-center my-2">${stars}</div>`;
+        }
+
+        // DOM Content Loaded to inject dynamic parts (Menu/Reviews/Team)
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Inject Menu Items
+            const menuContainer = document.getElementById('menu-items-container');
+            if (menuContainer) {
+                menuData.forEach(item => {
+                    const html = `
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 group">
+                            <div class="relative h-48 overflow-hidden">
+                                <img
+                                    src="${item.imagePlaceholder}"
+                                    alt="${item.name}"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                                    onerror="this.onerror=null;this.src='${item.imagePlaceholder}';"
+                                />
+                                <span class="absolute top-3 right-3 primary-bg text-gray-900 font-bold py-1 px-3 rounded-full text-sm shadow-md">${item.price}</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold mb-2 primary-text">${item.name}</h3>
+                                <p class="text-gray-600 mb-4">${item.description}</p>
+                                <button onclick="alert('Item ${item.id} Added to Cart!')" class="text-sm font-semibold border border-gray-300 primary-text px-4 py-2 rounded-full hover:primary-bg hover:text-white transition duration-300">
+                                    Add to Cart (Function)
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    menuContainer.insertAdjacentHTML('beforeend', html);
+                });
+            }
+            
+            // 2. Inject Review Items
+            const reviewContainer = document.getElementById('review-items-container');
+            if (reviewContainer) {
+                reviewData.forEach(review => {
+                    const html = `
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-yellow-500 flex flex-col items-center">
+                            ${generateStarRating(review.rating)}
+                            <p class="text-gray-700 italic mb-4">"${review.comment}"</p>
+                            <div class="w-16 h-16 rounded-full bg-gray-200 mb-2 flex items-center justify-center text-xl font-bold primary-text">
+                                ${review.name.charAt(0)}
+                            </div>
+                            <h4 class="text-lg font-bold">${review.name}</h4>
+                        </div>
+                    `;
+                    reviewContainer.insertAdjacentHTML('beforeend', html);
+                });
+            }
+
+            // 3. Inject Team Members
+            const teamContainer = document.getElementById('team-items-container');
+            if (teamContainer) {
+                teamData.forEach(member => {
+                    const html = `
+                        <div class="relative group rounded-xl overflow-hidden shadow-xl">
+                            <img
+                                src="${member.imagePlaceholder}"
+                                alt="${member.name}"
+                                class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                                onerror="this.onerror=null;this.src='${member.imagePlaceholder}';"
+                            />
+                            <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+                                <div class="text-white p-4 text-center">
+                                    <h3 class="text-2xl font-bold primary-text mb-1">${member.name}</h3>
+                                    <p class="text-lg mb-3">${member.role}</p>
+                                    <p class="text-sm font-light italic mb-4">${member.bio}</p>
+                                    <div class="flex justify-center space-x-3 text-2xl">
+                                        <!-- Placeholder Social Icons (Lucide Icons) -->
+                                        <i data-lucide="facebook" class="w-6 h-6 hover:text-yellow-500 transition cursor-pointer"></i>
+                                        <i data-lucide="twitter" class="w-6 h-6 hover:text-yellow-500 transition cursor-pointer"></i>
+                                        <i data-lucide="instagram" class="w-6 h-6 hover:text-yellow-500 transition cursor-pointer"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    teamContainer.insertAdjacentHTML('beforeend', html);
+                });
+            }
+
+            // Replace lucide icon placeholders with SVG elements
+            lucide.createIcons(); 
+        });
+
+        // Function to demonstrate button action
+        function showActionMessage(action) {
+             // We use console.log instead of alert() to avoid blocking the browser
+             console.log(action + ' button clicked! (Check the console log)');
+             const toast = document.getElementById('toast-message');
+             toast.textContent = action + ' Action Triggered!';
+             toast.classList.remove('opacity-0', 'scale-90', 'hidden');
+             toast.classList.add('opacity-100', 'scale-100');
+
+             setTimeout(() => {
+                toast.classList.remove('opacity-100', 'scale-100');
+                toast.classList.add('opacity-0', 'scale-90');
+                // Optional: hide completely after transition
+                setTimeout(() => { toast.classList.add('hidden'); }, 300);
+             }, 2000);
+        }
+    </script>
+    
+    <!-- Floating Toast Message Box (Replaces alert()) -->
+    <div id="toast-message" class="hidden fixed bottom-5 right-5 z-[1000] bg-gray-800 text-white p-3 rounded-lg shadow-2xl transition-all duration-300 opacity-0 scale-90">
+        Action Triggered!
+    </div>
+
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg">
+        <div class="flex items-center justify-between max-w-7xl mx-auto px-4 py-3">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <i data-lucide="soup" class="w-8 h-8 primary-text"></i>
+                <span class="text-2xl font-bold primary-text">Gourmet Grille</span>
+            </div>
+
+            <!-- Desktop Links -->
+            <ul class="hidden lg:flex space-x-6">
+                <li><a href="#Home" class="text-gray-800 font-medium text-lg hover:text-red-600 transition duration-150">Home</a></li>
+                <li><a href="#About" class="text-gray-800 font-medium text-lg hover:text-red-600 transition duration-150">About</a></li>
+                <li><a href="#Menu" class="text-gray-800 font-medium text-lg hover:text-red-600 transition duration-150">Menu</a></li>
+                <li><a href="#Gallery" class="text-gray-800 font-medium text-lg hover:text-red-600 transition duration-150">Gallery</a></li>
+                <li><a href="#Review" class="text-gray-800 font-medium text-lg hover:text-red-600 transition duration-150">Review</a></li>
+                <li><a href="#Team" class="text-gray-800 font-medium text-lg hover:text-red-600 transition duration-150">Team</a></li>
+                <li><a href="#Order" class="text-gray-800 font-medium text-lg hover:text-red-600 transition duration-150">Order</a></li>
+            </ul>
+
+            <!-- Icons and Mobile Menu Button -->
+            <div class="flex items-center space-x-4">
+                <!-- Clickable Button Demo -->
+                <button onclick="showActionMessage('Search')" class="p-2 border rounded-full hover:bg-gray-100 transition duration-150 hidden lg:block">
+                    <span class="sr-only">Search</span>
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </button>
+                <button onclick="showActionMessage('Cart')" class="p-2 border rounded-full hover:bg-gray-100 transition duration-150 hidden lg:block">
+                    <span class="sr-only">Shopping Cart</span>
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                </button>
+
+                <button
+                    class="lg:hidden p-2 rounded-full hover:bg-gray-100 transition duration-150"
+                    onclick="toggleMenu()"
+                    aria-label="Toggle navigation menu"
+                >
+                    <i data-lucide="menu" id="menu-icon" class="h-6 w-6"></i>
+                    <i data-lucide="x" id="close-icon" class="h-6 w-6 hidden"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <ul id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl py-2 transition-transform duration-300">
+            <li><a href="#Home" onclick="toggleMenu()" class="block px-6 py-3 text-gray-800 font-medium hover:primary-bg hover:text-white transition duration-150">Home</a></li>
+            <li><a href="#About" onclick="toggleMenu()" class="block px-6 py-3 text-gray-800 font-medium hover:primary-bg hover:text-white transition duration-150">About</a></li>
+            <li><a href="#Menu" onclick="toggleMenu()" class="block px-6 py-3 text-gray-800 font-medium hover:primary-bg hover:text-white transition duration-150">Menu</a></li>
+            <li><a href="#Gallery" onclick="toggleMenu()" class="block px-6 py-3 text-gray-800 font-medium hover:primary-bg hover:text-white transition duration-150">Gallery</a></li>
+            <li><a href="#Review" onclick="toggleMenu()" class="block px-6 py-3 text-gray-800 font-medium hover:primary-bg hover:text-white transition duration-150">Review</a></li>
+            <li><a href="#Team" onclick="toggleMenu()" class="block px-6 py-3 text-gray-800 font-medium hover:primary-bg hover:text-white transition duration-150">Team</a></li>
+            <li><a href="#Order" onclick="toggleMenu()" class="block px-6 py-3 text-gray-800 font-medium hover:primary-bg hover:text-white transition duration-150">Order</a></li>
+        </ul>
+    </nav>
+
+    <!-- --- Home Section --- -->
+    <section id="Home" class="relative hero-bg flex items-center justify-center min-h-screen pt-20">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="text-center text-white z-10 p-6 md:p-12 max-w-3xl">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+                Elevate Your Taste with <span class="primary-text">Gourmet Grille</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-8 font-light">
+                Experience world-class dining with locally sourced, seasonal ingredients. Every dish is a masterpiece.
+            </p>
+            <!-- Clickable Button Demo -->
+            <a
+                href="#Order"
+                class="inline-block primary-bg text-gray-900 font-semibold py-3 px-8 rounded-full text-lg shadow-xl hover:shadow-2xl transition duration-300 transform hover:scale-105"
+            >
+                Order Now
+            </a>
+        </div>
+    </section>
+
+    <!-- --- About Section --- -->
+    <section id="About" class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="relative rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                    src="https://img.freepik.com/premium-photo/chef-preparing-dish-healthy-food_23-2148145633.jpg?w=740" 
+                    alt="Chef preparing a dish" 
+                    class="w-full h-auto object-cover transform hover:scale-105 transition duration-500" 
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/8B4513/ffffff?text=Chef+Preparing+Dish';"
+                />
+            </div>
+            <div>
+                <span class="text-lg font-semibold primary-text uppercase tracking-widest">Our Story</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-6">
+                    The Journey of <span class="primary-text">Exquisite</span> Taste
+                </h2>
+                <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                    Founded in 2018 by culinary enthusiasts, The Gourmet Grille was created with a single mission: to redefine the casual fine dining experience. We believe that extraordinary food doesn't need to be intimidating, only perfectly executed. Our kitchen uses only fresh, organic produce from local farms, ensuring the highest quality and sustainability in every bite.
+                </p>
+                <!-- Clickable Button Demo -->
+                <button onclick="showActionMessage('Read More')" class="primary-bg text-gray-900 font-semibold py-2 px-6 rounded-full shadow-lg hover:shadow-xl transition duration-300">
+                    Read More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Menu Section --- -->
+    <section id="Menu" class="section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-lg font-semibold primary-text uppercase tracking-widest">Our Specialties</span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-12">
+                Signature <span class="primary-text">Menu</span> Items
+            </h2>
+
+            <div id="menu-items-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu items injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Gallery Section --- -->
+    <section id="Gallery" class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-lg font-semibold primary-text uppercase tracking-widest">Visual Feast</span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-12">
+                Our Culinary <span class="primary-text">Gallery</span>
+            </h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Gallery items -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
+                    <img src="https://www.sandraseasycooking.com/wp-content/uploads/2021/07/Easy-Entertaining-Appetizer-Platter-5-640x911.jpg" alt="Plated Appetizer" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.onerror=null;this.src='https://placehold.co/400x400/94A3B8/ffffff?text=Plated+Appetizer';" />
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                      <span class="text-white text-xl font-bold border-2 border-white p-2 rounded">View Dish</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
+                    <img src="https://img.freepik.com/premium-photo/assorted-wine-selection-cellar_406939-14091.jpg" alt="Wine Selection" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.onerror=null;this.src='https://placehold.co/400x400/B5B5B5/000000?text=Wine+Selection';" />
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                      <span class="text-white text-xl font-bold border-2 border-white p-2 rounded">View Wine</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
+                    <img src="https://www.re-thinkingthefuture.com/wp-content/uploads/2021/06/A4395-50-Top-Restuarants-with-beautiful-Interior-Design-03.2-Bangkok-Kolkata-India.jpg" alt="Restaurant Interior" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.onerror=null;this.src='https://placehold.co/400x400/C0C0C0/333333?text=Restaurant+Interior';" />
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                      <span class="text-white text-xl font-bold border-2 border-white p-2 rounded">View Venue</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
+                    <img src="https://i.pinimg.com/originals/53/5e/28/535e28ee6b7d9fab918cd229422b6ed0.jpg" alt="Dessert Presentation" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.onerror=null;this.src='https://placehold.co/400x400/5F9EA0/ffffff?text=Dessert+Presentation';" />
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                      <span class="text-white text-xl font-bold border-2 border-white p-2 rounded">View Dessert</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
+                    <img src="https://viski.com/cdn/shop/files/Art-of-Cocktail-Presentation_Techniques_BlogHero.jpg?v=1696023824&width=1500" alt="Signature Cocktail" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.onerror=null;this.src='https://placehold.co/400x400/FFD700/000000?text=Signature+Cocktail';" />
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                      <span class="text-white text-xl font-bold border-2 border-white p-2 rounded">View Drinks</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
+                    <img src="https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/4894916520943/Tokyo-Gourmet-Gyu-No-Tatsujin-Akhibara-Premium-Wagyu-Beef-Course-Japan-da6cb785-b19d-4774-900e-067c8b29e689.jpeg?_src=imagekit&tr=c-at_max" alt="Meat Course" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.onerror=null;this.src='https://placehold.co/400x400/FF6347/ffffff?text=Meat+Course';" />
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                      <span class="text-white text-xl font-bold border-2 border-white p-2 rounded">View Main</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
+                    <img src="https://www.mothermag.com/wp-content/uploads/2015/01/SugarSnapPeaCookieandKate.jpg" alt="Vegan Dish" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.onerror=null;this.src='https://placehold.co/400x400/98FB98/000000?text=Vegan+Dish';" />
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                      <span class="text-white text-xl font-bold border-2 border-white p-2 rounded">View Vegan</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
+                    <img src="https://png.pngtree.com/background/20230611/original/pngtree-restaurant-table-set-with-plates-picture-image_3169395.jpg" alt="Table Setting" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" onerror="this.onerror=null;this.src='https://placehold.co/400x400/8A2BE2/ffffff?text=Table+Setting';" />
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                      <span class="text-white text-xl font-bold border-2 border-white p-2 rounded">View Setup</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Review Section --- -->
+    <section id="Review" class="section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-lg font-semibold primary-text uppercase tracking-widest">Testimonials</span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-12">
+                What Our <span class="primary-text">Customers</span> Say
+            </h2>
+
+            <div id="review-items-container" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Review items injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- --- Team Section --- -->
+    <section id="Team" class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-lg font-semibold primary-text uppercase tracking-widest">The Masters</span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-12">
+                Meet Our <span class="primary-text">Culinary Team</span>
+            </h2>
+
+            <div id="team-items-container" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team members injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Order Section --- -->
+    <section id="Order" class="section-padding bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-lg font-semibold primary-text uppercase tracking-widest">Get It Now</span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-12">
+                Place Your <span class="primary-text">Order</span>
+            </h2>
+
+            <!-- Attach handleOrderSubmit function to the form's onsubmit event -->
+            <form onsubmit="handleOrderSubmit(event)" class="bg-gray-50 p-8 rounded-xl shadow-2xl space-y-6">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">Delivery Details</h3>
+
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <input type="text" name="name" placeholder="Your Full Name*" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" required />
+                    <input type="email" name="email" placeholder="Your Email Address" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" />
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <input type="text" name="phone" placeholder="Your Phone Number" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" />
+                    <input type="text" name="order_summary" placeholder="Your Order (e.g., Salmon, Risotto, Coffee)" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" />
+                </div>
+                
+                <input type="text" name="address" placeholder="Your Full Address" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" />
+
+                <textarea name="notes" placeholder="Any special notes or requests..." rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500"></textarea>
+
+                <!-- Clickable Button: Submits the form and calls the JS function -->
+                <button
+                    type="submit"
+                    id="order-submit-button"
+                    class="w-full primary-bg text-gray-900 font-bold py-4 rounded-full text-xl shadow-xl hover:shadow-2xl transition duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                    Confirm Order
+                </button>
+
+                <!-- Status Message container updated by the JS function -->
+                <div id="order-status-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- --- Footer --- -->
+    <footer class="w-full primary-bg pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 text-gray-900">
+                <!-- Locations -->
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold mb-3">Locations</h3>
+                    <p class="text-sm hover:underline cursor-pointer">New York, USA</p>
+                    <p class="text-sm hover:underline cursor-pointer">London, UK</p>
+                    <p class="text-sm hover:underline cursor-pointer">South Africa, Cape Town</p>
+                    <p class="text-sm hover:underline cursor-pointer">South Africa, Pretoria</p>
+                </div>
+
+                <!-- Quick Link -->
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold mb-3">Quick Link</h3>
+                    <a href="#Home" class="block text-sm hover:underline cursor-pointer">Home</a>
+                    <a href="#About" class="block text-sm hover:underline cursor-pointer">About</a>
+                    <a href="#Menu" class="block text-sm hover:underline cursor-pointer">Menu</a>
+                    <a href="#Gallery" class="block text-sm hover:underline cursor-pointer">Gallery</a>
+                    <a href="#Order" class="block text-sm hover:underline cursor-pointer">Order</a>
+                </div>
+
+                <!-- Contact -->
+                <div class="space-y-2 col-span-2 lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-3">Contact</h3>
+                    <p class="flex items-center text-sm"><i data-lucide="phone" class="w-4 h-4 mr-2"></i> +1 555-GRILLE-1</p>
+                    <p class="flex items-center text-sm"><i data-lucide="phone" class="w-4 h-4 mr-2"></i> +1 555-GRILLE-2</p>
+                    <p class="flex items-center text-sm"><i data-lucide="mail" class="w-4 h-4 mr-2"></i> info@gourmetgrille.com</p>
+                </div>
+
+                <!-- Our Service -->
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold mb-3">Our Service</h3>
+                    <p class="text-sm">Fast Delivery</p>
+                    <p class="text-sm">Easy Payments</p>
+                    <p class="text-sm">24 x 7 Service</p>
+                    <p class="text-sm">Private Events</p>
+                </div>
+
+                <!-- Follows -->
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold mb-3">Follow Us</h3>
+                    <div class="flex space-x-3 text-2xl mt-4">
+                        <i data-lucide="facebook" class="hover:text-white transition cursor-pointer"></i>
+                        <i data-lucide="twitter" class="hover:text-white transition cursor-pointer"></i>
+                        <i data-lucide="instagram" class="hover:text-white transition cursor-pointer"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="text-center text-gray-900 mt-12 pt-4 border-t border-gray-700/50 text-sm">
+                &copy; 2024 The Gourmet Grille. All Rights Reserved.
+            </p>
+            <!-- Floating Toast Message Box (Replaces alert()) -->
+    <div id="toast-message" class="hidden fixed bottom-5 right-5 z-[1000] bg-gray-800 text-white p-3 rounded-lg shadow-2xl transition-all duration-300 opacity-0 scale-90">
+        Action Triggered!
+    </div>
+
+    <!-- Order Confirmation Popup Modal -->
+    <div id="order-popup-overlay" class="hidden fixed inset-0 bg-black/60 z-[2000] flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div id="order-popup-content" class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 transform transition-all duration-300 scale-90">
+            <div class="text-center">
+                <!-- Success Icon -->
+                <div class="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                
+                <h3 class="text-3xl font-bold text-gray-800 mb-2">Order Confirmed!</h3>
+                <p class="text-gray-600 mb-6">Your order has been successfully placed. We'll contact you shortly with the delivery details.</p>
+                
+                <div class="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-4 mb-6">
+                    <p class="text-sm text-gray-700">
+                        <strong class="primary-text">Order ID:</strong> <span id="order-id-display">#GG-12345</span>
+                    </p>
+                </div>
+                
+                <button onclick="closeOrderPopup()" class="w-full primary-bg text-gray-900 font-semibold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    Continue Browsing
+                </button>
+            </div>
+        </div>
+    </div>
+        </div>
+    </footer>
+</body>
+</html>
