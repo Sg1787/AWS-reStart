@@ -25,16 +25,21 @@ No drama—just clean access. (Khorne was unimpressed. Too peaceful for his tast
 ### 2. **Checked if Apache Was Even Awake**
 Ran:
 ```bash
-sudo systemctl status httpd
+sudo systemctl status httpd.service
+
 ```
+<img width="801" height="459" alt="image" src="https://github.com/user-attachments/assets/36530121-38c7-444d-9911-3d4e04230d3f" />
+
 Output? **Inactive (dead)**.  
 Ah—so the server wasn’t running at all!  
 
 
 I revived it with:
 ```bash
-sudo systemctl start httpd
+sudo systemctl start httpd.service
 ```
+<img width="805" height="457" alt="image" src="https://github.com/user-attachments/assets/c4c28735-e2d0-466a-893c-2601044847fa" />
+
 Now `httpd` was alive… but still invisible to the outside world.
 
 >  *Nurgle whispered: “Let it rot in silence…”*  
@@ -43,7 +48,7 @@ Now `httpd` was alive… but still invisible to the outside world.
 ---
 
 ### 3. **Tested Browser Access → Silence**
-Typed `http://<PUBLIC_IP>` into my browser.  
+Typed `http://<ip10-0-10-51>` into my browser.  
 **Blank screen. No error. Just void.**  
 
 That told me: the service works *locally*, but **something’s blocking inbound traffic**.
@@ -65,7 +70,9 @@ The instance could *reach out*—but the world couldn’t reach *in*.
 ### 5. **Hunted the Real Culprit: The Security Group**
 I opened the **VPC Console** and inspected layer by layer:
 - Internet Gateway: Attached  
-- Route Table: `0.0.0.0/0` → igw-xxxx  
+- Route Table: `0.0.0.0/0` → igw-xxxx
+<img width="1885" height="324" alt="image" src="https://github.com/user-attachments/assets/d22caffc-7274-438a-96ad-33b7b2d32240" />
+
 - Subnet: Public (routed to IGW)  
 - **Security Group**: Only allowed **port 22 (SSH)**  
 
@@ -81,7 +88,7 @@ I edited the Security Group and added:
 - **Type**: HTTP  
 - **Protocol**: TCP  
 - **Port**: 80  
-- **Source**: `0.0.0.0/0` *(lab-only! In prod, I’d lock this down)*
+- **Source**: *(lab-only! In prod, I’d lock this down)*
 
 ---
 
@@ -110,4 +117,5 @@ You’re **banishing a minor Warp entity disguised as a missing firewall rule**.
 
 — **Sadiyah Grobbler**  
 *Aspiring Security Engineer | AWS re/Start Alum | Keeper of Least-Privilege Principles*
+
 ```
