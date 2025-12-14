@@ -1,4 +1,4 @@
-# 🛠️ My AWS CLI Setup Notes (Red Hat)
+#  My AWS CLI Setup Notes (Red Hat)
 
 ## Goal
 My goal was to install and set up the **AWS CLI** on a Red Hat Linux instance and use it to interact with **IAM**.
@@ -12,7 +12,7 @@ The diagram shows the simple path a user can take to manage AWS services:
 
 ---
 
-## 1️⃣ Task 1: I Connected via SSH
+##  Task 1: I Connected via SSH
 
 I used the **PublicIP** and my `labsuser.pem` key to connect from my terminal.
 
@@ -23,7 +23,7 @@ I used the **PublicIP** and my `labsuser.pem` key to connect from my terminal.
 
 ---
 
-## 2️⃣ Task 2: I Installed the AWS CLI
+##  Task 2: I Installed the AWS CLI
 
 I ran these four commands in the SSH terminal:
 
@@ -46,7 +46,7 @@ I ran these four commands in the SSH terminal:
 <img width="697" height="82" alt="image" src="https://github.com/user-attachments/assets/b2c8f9a1-a506-4d24-b494-e4ae8ebc605c" />
 
 ---
-## 3️⃣ Task 3: I Checked IAM Configuration in the AWS Console
+##  Task 3: I Checked IAM Configuration in the AWS Console
 
 My goal was to look at the permissions for the user I'm using.
 
@@ -65,7 +65,7 @@ My goal was to look at the permissions for the user I'm using.
 
 --
 
-## 4️⃣ Task 4: I Configured the AWS CLI
+##  Task 4: I Configured the AWS CLI
 
 I used my **Access Key ID** and **Secret Key** (from the Details panel) to configure the CLI.
 
@@ -83,7 +83,7 @@ I used my **Access Key ID** and **Secret Key** (from the Details panel) to confi
 
 ---
 
-## 5️⃣ Task 5: I Tested IAM Access
+##  Task 5: I Tested IAM Access
 
 I verified my connection by listing IAM users.
 
@@ -102,5 +102,5 @@ I verified my connection by listing IAM users.
 
 ---
 
-## ✅ Summary
+## Summary
 I successfully installed, configured, and tested the AWS CLI.
