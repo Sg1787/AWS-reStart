@@ -20,9 +20,9 @@ I’ve conquered the following **SimuLearn scenarios**—interactive, story-driv
 
 | Module | Scenario Summary | Certification |
 | :--- | :--- | :---: |
-|  **[Core Security Concepts](https://skillbuilder.aws/learn/3KYWQBTSTV/aws-simulearn-core-security-concepts/Q29T2DWZPK)** | Helped a stock exchange implement **least-privilege access** for support engineers—because nobody needs `AdministratorAccess` to reboot a printer. | n/a |
-|  **[Networking Concepts](https://skillbuilder.aws/learn/XCEMH2NXKJ/aws-simulearn-networking-concepts/QN5P4AJMUV)** | Designed a **secure network architecture** for a bank so their internal resources don’t accidentally gossip with the whole internet. | n/a |
-|  **[File Systems in the Cloud](https://skillbuilder.aws/learn/A5M8X2CHM3/aws-simulearn-file-systems-in-the-cloud/RAJVAUNMHR)** | Built a shared file system for a **pet modeling agency** (yes, really)—so fluffy clients’ portfolios sync across branches without physical servers. | n/a |
+|  **[Core Security Concepts](https://skillbuilder.aws/learn/3KYWQBTSTV/aws-simulearn-core-security-concepts/Q29T2DWZPK)** | Helped a stock exchange implement **least-privilege access** for support engineers—because nobody needs `AdministratorAccess` to reboot a printer. | <img width="920" height="709" alt="image" src="https://github.com/user-attachments/assets/24b0bcc4-5c86-4972-9b50-9b3ac9adae62" />|
+|  **[Networking Concepts](https://skillbuilder.aws/learn/XCEMH2NXKJ/aws-simulearn-networking-concepts/QN5P4AJMUV)** | Designed a **secure network architecture** for a bank so their internal resources don’t accidentally gossip with the whole internet. | <img width="789" height="598" alt="image" src="https://github.com/user-attachments/assets/d40e9cc1-3949-440f-bf9f-e7b1d253cc49" />|
+|  **[File Systems in the Cloud](https://skillbuilder.aws/learn/A5M8X2CHM3/aws-simulearn-file-systems-in-the-cloud/RAJVAUNMHR)** | Built a shared file system for a **pet modeling agency** (yes, really)—so fluffy clients’ portfolios sync across branches without physical servers. | <img width="874" height="623" alt="image" src="https://github.com/user-attachments/assets/2f8eb0ca-6cf3-4769-84a6-d9230b695b0b" />|
 |  **[Databases in Practice](https://skillbuilder.aws/learn/6VTV7UQ6CY/aws-simulearn-databases-in-practice/3M6ZTC32MX)** | Freed an insurance company’s DBAs from patching purgatory using **managed databases**—more uptime, less toil, maximum efficiency. | <img width="1005" height="709" alt="image" src="https://github.com/user-attachments/assets/f9f97a69-1743-47be-a2ad-52d22d1250d1" />|
 
 >  *"Rot brings renewal. Legacy infrastructure? Let it decay. Modernize with RDS, EFS, and VPCs!"*
@@ -59,3 +59,4 @@ Feel free to explore, learn with me, or send memes about IAM policies gone wrong
 
 *May your deployments be green, your logs be clean, and your access keys never leak.*  
  **Praise Nurgle. Praise Cloud.**
+
