@@ -132,6 +132,3 @@ This is the future: **scale without sacrifice**, **speed without schema**, **cha
 — Sadiyah Grobbler  
 **AWS Re/Start Acolyte | Aspiring Security Engineer | Devotee of NoSQL Freedom**
 
----
-
-Drop this into your repo, and let the NoSQL daemons sing. Ready for the next incantation! 🖤
