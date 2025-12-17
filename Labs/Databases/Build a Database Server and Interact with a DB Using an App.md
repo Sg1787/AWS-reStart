@@ -101,7 +101,15 @@ Now, I commanded the web server to speak with the database—and thus, give life
 ---
 <img width="1089" height="516" alt="image" src="https://github.com/user-attachments/assets/8b7a8190-9417-48aa-8628-a67bd154d1db" />
 
-## Lab Complete: A Chaos-Infused Victory
+
+Struggles I Met (And How I Conquered Them)
+Even with the blessings of Nurgle’s patience and Khorne’s fury, the path to database enlightenment was not without its daemonic pitfalls. Here’s where I stumbled—and how I rose again:
+
+Security Group Misfire
+At first, I forgot to remove the default security group when configuring the RDS instance. The app couldn’t connect, and my Address Book remained barren—a void screaming for data.
+Fix: I revisited the RDS connectivity settings, explicitly removed the default group, and ensured only DB Security Group was attached. Then I double-checked that this group allowed inbound MySQL traffic from the Web Security Group—not just any IP. Lesson: Security groups are directional wards; misalign them, and your data stays trapped in the Warp.
+
+## Lab Complete: A Chaos-Infused Victory -- que awkward victory dance
 
 I have:
 - Deployed a **secure, private, Multi-AZ RDS MySQL instance**
