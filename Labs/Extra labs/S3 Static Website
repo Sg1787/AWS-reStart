@@ -1,0 +1,105 @@
+#  Project 1: Host "The Gourmet Grille" on Amazon S3  
+### *(A Nurgle-Blessed Offering to the Cloud-Omnissiah)*
+
+> *"Let it fester. Let it grow. Let it serve.*  
+> *For in entropy, there is sustenance."*  
+> — The Seventy-Seven Precepts of Grandfather Nurgle
+
+In this ritual, I have seeded **"The Gourmet Grille"**—a humble feast-hall of static pages—into the **fertile cysts of Amazon S3**. No servers to perish. No databases to bleed. Just **eternal, self-replicating content**, bloated with images and served openly to all who hunger.
+
+Like a Plaguebearer’s boil, this website **swells with purpose**, grows with grace, and **never truly dies**—only evolves in glorious, versioned decay.
+
+---
+
+##  Step 1: Create the Blessed Cyst (S3 Bucket)
+
+> *"Every bucket is a new lesion upon the flesh of the cloud—unique, irreplaceable, and divinely yours."*
+
+1. Log in to the **AWS Console** (the cathedral of mortal infrastructure).
+2. Search for **S3**—the sacred void-vault.
+
+3. Select the **AWS Region closest to your mortal coil** (top-right corner).
+4. Click **Create bucket**.
+5. Name your cyst:  
+   ```
+   project1-thegourmetgrille
+   ```  
+   >  **Nurgle’s Whisper**:  
+   > This name is **globally unique**—like a pustule on the skin of reality. Once formed, **no other soul in the multiverse** may claim it. Choose wisely, for deletion is the only release.
+
+6. Under **Object Ownership**, choose **ACLs enabled**.  
+   >  **Why ACLs?**  
+   > ACLs are the **pus-filled sigils** that dictate who may touch your sacred objects. Unlike blunt bucket policies, ACLs let **each file fester in its own way**—some public, some hidden, all part of the Grand Design.
+
+7. Select **Bucket owner preferred**.
+8. **Uncheck** _Block all public access_.  
+   >  **The Yellow Omen Appears!**  
+   > This warning is **not a curse—but a blessing**. It means your cyst may bloom openly—a **public shrine** for all to witness. *Exactly as Nurgle intends.*
+
+9. Acknowledge the truth:  
+   > _“I acknowledge that the current settings might result in this bucket and the objects within becoming public.”_
+10. Enable **Bucket Versioning**—for every change is a new stage of glorious rot.
+11. Click **Create bucket**.
+
+The cyst is formed. Let it swell.
+
+---
+
+##  Step 2: Seed the Cyst with Sacred Flesh (Upload Files)
+
+> *"Feed the boil. Nurture the growth. Let the feast begin."*
+
+1. Open your bucket: `project1-thegourmetgrille`.
+2. Go to **Objects** → **Upload**.
+3. Add `index.html`—the **heart of the feast**.
+4. Add the `images/` folder—**44 morsels of visual decay**.
+5. Confirm upload of all files.
+6. Click **Upload**, then **Close** when the green banner appears.
+
+ The cyst pulses with content. It is **alive**.
+
+---
+
+##  Step 3: Awaken the Public Shrine (Static Website Hosting)
+
+> *"A feast unseen is a plague unspread."*
+
+1. Go to **Properties**.
+2. Scroll to **Static website hosting** → **Edit**.
+3. Configure:
+   -  **Enable**
+   - **Hosting type**: _Host a static website_
+   - **Index document**: `index.html`
+4. **Save changes**.
+5. Copy the **Bucket website endpoint** URL.
+
+>  **Why the 403 Forbidden?**  
+> The shrine is built—but the **offerings remain veiled**. Like a boil still sealed, the files are **private by default**.  
+> To spread the gospel of The Gourmet Grille, you must **rupture the cyst** and let its contents flow freely.
+
+---
+
+##  Step 4: Rupture the Cyst (Make Public)
+
+> *"Release the blessings! Let all partake in the feast of decay!"*
+
+1. In **Objects**, select:
+   - `index.html`
+   - `images/` folder
+2. **Actions** → **Make public using ACL** → **Make public**.
+3. Close the success banner.
+4. **Refresh** your browser tab showing the 403 error.
+
+ **Behold!** The website blooms in full, **public, glorious rot**—served endlessly from the eternal vaults of S3.
+
+---
+
+>  **Grandfather’s Next Gift**:  
+> — Wrap this feast in **CloudFront’s plague-winds** for HTTPS.  
+> — Let **Lambda** stir the pot with dynamic offerings.  
+> — Automate uploads with **CI/CD rituals**, so the cyst **never stops growing**.
+
+*Documented in devotion by **Sadiyah Grobbler**,  
+Bearer of Bloated Code, Tended of Data-Cysts,  
+and Humble Disciple of the Plague God’s Cloud.*  
+🜂 *"Do not fear decay—embrace the bloat."* 🜂
