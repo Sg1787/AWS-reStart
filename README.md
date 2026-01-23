@@ -63,56 +63,14 @@ All completed on [AWS Skill Builder](https://skillbuilder.aws):
 >  *"Data left unencrypted is data waiting to be stolen. Encrypt always—even your grocery lists."*
 
 ---
+## Pojects I have built so far
 
-##  Projects
+| Project Name | What it is about | 
+|-------|----------------|
+| [**Static Website**](https://github.com/Sg1787/AWS-reStart/tree/main/Projects/Static%20Website) | Connecting a Static website to a S3 |  
+| [**Create a banker bot Amazon Lex**](https://github.com/Sg1787/AWSreStart/blob/main/Labs/Extra%20labs/Create%20a%20banker%20bot%20Amazon%20Lex.md) | Built a Banker bot with Amazon Lex | 
+| [**Cloud Security with AWS IAM**](https://github.com/Sg1787/AWS-reStart/blob/main/Labs/Extra%20labs/Cloud%20Security%20with%20AWS%20IAM.md) | Create a secure log in wit Amazon IAM |
 
-### 1. **Static Website on S3** *(Deadline: 28 Nov)*  
-- Hosted a personal portfolio using **S3 + Route 53**.  
-- Enforced **HTTPS**, **blocked public puts**, and enabled **logging**.  
-- *Why?* Even simple sites need security hygiene.
-
-### 2. **3D Cloud Architecture Diagram** *(Deadline: 5 Dec)*  
-- Visualized a secure, multi-tier AWS architecture (web, app, DB layers).  
-- Included **VPC isolation**, **IAM roles**, and **encryption flows**.  
-- *Why?* Good security starts with clear design.
-
-### 3. **AWS Lex Chatbot** *(TBD)*  
-- TBA
-
----
-
-##  AWS Core Services — Explained Simply
-
-### Compute  
-> “Where your code lives.”  
-- **EC2**: Virtual servers you manage. Great for control, but **you patch them**.  
-- **Lambda**: Run code without servers. AWS handles the OS—**less surface to secure**.  
-- *Security Tip:* Always run with **least-privilege IAM roles**, never root!
-
-### Networking  
-> “How your resources talk—safely.”  
-- **VPC**: Your private cloud inside AWS. No strangers allowed.  
-- **Route 53**: Directs traffic (like a cloud GPS).  
-- *Security Tip:* Keep databases in **private subnets**—no direct internet access!
-
-### Storage  
-> “Where your data rests.”  
-- **S3**: For files (images, logs, backups). Use **bucket policies + encryption**.  
-- **EBS**: Disk storage attached to EC2. Encrypt it—always.  
-- *Security Tip:* **Block public access** by default. Assume everything is sensitive.
-
-### Databases  
-> “The heart of your app—protect it.”  
-- **RDS**: Managed relational DBs (MySQL, PostgreSQL). AWS handles patching.  
-- **DynamoDB**: Fast, serverless NoSQL. Scale without ops.  
-- *Security Tip:* Never store credentials in code. Use **IAM auth or Secrets Manager**.
-
-### Security  
-> “The glue that holds it all together.”  
-- **IAM**: Who can do what. **Principle of least privilege is law.**  
-- **KMS**: Encrypt data at rest and in transit.  
-- **CloudWatch + GuardDuty**: Watch for weirdness. Detect. Respond.  
-- *Nurgle’s Law:* “If it’s not logged, it didn’t happen. If it’s not encrypted, it’s already stolen.”
 
 ---
 
